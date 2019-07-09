@@ -8,6 +8,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 开发环境配置
 """ # noqa
+import os
 
 DEBUG = True
 
@@ -23,12 +24,12 @@ STATIC_URL = "/static/"
 # 数据库配置信息
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',   # 默认用mysql
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'open_paas',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
+        'USER': os.environ.get('DB_USERNAME'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST'),
+        'PORT': os.environ.get('DB_PORT'),
     }
 }
 
